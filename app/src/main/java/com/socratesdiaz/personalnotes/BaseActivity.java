@@ -68,7 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         makeListNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NoteDetailActivity.class);
+                Intent intent = new Intent(BaseActivity.this, NoteDetailActivity.class);
                 intent.putExtra(AppConstant.LIST_NOTES, AppConstant.TRUE);
                 intent.putExtra(AppConstant.NOTE_OR_REMINDER, mTitle);
                 startActivity(intent);
@@ -77,7 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         makePhotoNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NoteDetailActivity.class);
+                Intent intent = new Intent(BaseActivity.this, NoteDetailActivity.class);
                 intent.putExtra(AppConstant.GO_TO_CAMERA, AppConstant.TRUE);
                 intent.putExtra(AppConstant.NOTE_OR_REMINDER, mTitle);
                 startActivity(intent);
