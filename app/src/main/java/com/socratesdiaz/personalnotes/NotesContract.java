@@ -15,7 +15,7 @@ public class NotesContract {
         String NOTES_TIME = "notes_time";
         String NOTES_IMAGE = "notes_image";
         String NOTES_TYPE = "notes_type";
-        String NOTES_IMAGE_STORAGE = "notes_image_storage_selection";
+        String NOTES_IMAGE_STORAGE_SELECTION = "notes_image_storage_selection";
     }
 
     public static final String CONTENT_AUTHORITY = "com.socratesdiaz.personalnotes.provider";
@@ -24,7 +24,15 @@ public class NotesContract {
     public static final Uri URI_TABLE = BASE_CONTENT_URI.buildUpon().appendEncodedPath(PATH_NOTES).build();
 
     public static class Notes implements NotesColumns, BaseColumns {
-        public static final Uri CONTENT_URI =
-                BASE_CONTENT_URI.buildUpon().appendEncodedPath(PATH_NOTES).build();
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd." + CONTENT_AUTHORITY + ".notes";
+        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd." + CONTENT_AUTHORITY + ".notes";
+
+        public static Uri buildNoteUri(String noteId) {
+            return BASE_CONTENT_URI.buildUpon().appendEncodedPath(noteId).build();
+        }
+
+        public static String getNoteId(Uri uri) {
+            return uri.getPathSegments().get(1);
+        }
     }
 }
