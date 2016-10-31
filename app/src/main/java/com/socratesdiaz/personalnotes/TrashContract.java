@@ -7,31 +7,31 @@ import android.provider.BaseColumns;
  * Created by socratesdiaz on 10/26/16.
  */
 public class TrashContract {
-    interface DeletedColumns {
-        String DELETED_ID = "_ID";
-        String DELETED_TITLE = "deleted_title";
-        String DELETED_DESCRIPTION = "deleted_description";
-        String DELETED_DATE_TIME = "deleted_date_time";
+    interface TrashColumns {
+        String TRASH_ID = "_ID";
+        String TRASH_TITLE = "trash_title";
+        String TRASH_DESCRIPTION = "trash_description";
+        String TRASH_DATE_TIME = "trash_date_time";
     }
 
     public static final String CONTENT_AUTHORITY = "com.socratesdiaz.personalnotes.provider";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    private static final String PATH_DELETED = "deleted";
+    private static final String PATH_DELETED = "trash";
     public static final Uri URI_TABLE =
             BASE_CONTENT_URI.buildUpon().appendEncodedPath(PATH_DELETED).build();
 
-    public static class Trash implements DeletedColumns, BaseColumns {
+    public static class Trash implements TrashColumns, BaseColumns {
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd." + CONTENT_AUTHORITY + ".deleted";
+                "vnd.android.cursor.dir/vnd." + CONTENT_AUTHORITY + ".trash";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd." + CONTENT_AUTHORITY + ".deleted";
+                "vnd.android.cursor.item/vnd." + CONTENT_AUTHORITY + ".trash";
 
-        public static Uri builDeletedUri(String deletedId) {
-            return URI_TABLE.buildUpon().appendEncodedPath(deletedId).build();
+        public static Uri builTrashUri(String trashId) {
+            return URI_TABLE.buildUpon().appendEncodedPath(trashId).build();
         }
 
-        public static String getDeletedId(Uri uri) {
+        public static String getTrashId(Uri uri) {
             return uri.getPathSegments().get(1);
         }
     }

@@ -37,7 +37,7 @@ public class ArchivesAdapter extends RecyclerView.Adapter<ArchivesAdapter.NoteHo
 
         holder._id.setText(String.valueOf(selectedNote.getId()));
         holder.title.setText(selectedNote.getTitle());
-        if(selectedNote.getDateTime().contains(AppConstant.No_TIME)) {
+        if(selectedNote.getDateTime().contains(AppConstant.NO_TIME)) {
             NoteCustomList noteCustomList = new NoteCustomList(mContext);
             noteCustomList.setUpForHomeAdapter(selectedNote.getDescription());
             holder.listLayout.removeAllViews();
